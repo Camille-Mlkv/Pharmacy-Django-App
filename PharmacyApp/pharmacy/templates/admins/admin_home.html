@@ -1,0 +1,22 @@
+{%extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Welcome to admin home page! <span class="icon-emo-happy"></span></h2>
+  <h4>Current time: {{date|date:"d/m/Y"}} ({{timezone}})</h4>
+  <div class="calendar">
+    {{ calendar|safe}}
+  </div>
+    <div>
+      <a href="{% url 'add_medication' %}" class="btn btn-primary">Add Medication</a><br>
+      <a href="{% url 'view_medications' %}" class="btn btn-primary">Check all medications</a><br>
+      <a href="{% url 'add_department' %}" class="btn btn-primary">Add pharmacy department</a><br>
+      <a href="{% url 'view_departments' %}" class="btn btn-primary">Check all departments</a><br>
+      <a href="{% url 'add_supplier' %}" class="btn btn-primary">Add supplier</a><br>
+      <a href="{% url 'view_suppliers' %}" class="btn btn-primary">Check suppliers</a><br>
+      <a href="{% url 'search_medication' %}" class="btn btn-primary">Find medicine</a><br>
+      <a href="{% url 'view_sales' %}" class="btn btn-primary">View all sales</a><br>
+      <a href="{% url 'view_employees' %}" class="btn btn-primary">View employees</a><br>
+      <a href="{% url 'view_statistics' %}" class="btn btn-primary">View statistics</a><br>
+    </div>
+
+{% endblock %}

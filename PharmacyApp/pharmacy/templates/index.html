@@ -1,0 +1,16 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+<div class="index-container">
+    <h1>Главная</h1>
+    <h2>Последняя статья</h2>
+    {% if latest_article %}
+        <h2>{{ latest_article.title }}</h2>
+        <p>{{ latest_article.content }}</p>
+        <p>Опубликовано: {{ latest_article.date_published }}</p>
+    {% else %}
+        <p>Статей еще нет.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{%extends 'baseview.html' %}
+
+{% block content %}
+    <h2>Search Results for "{{ query }}"</h2>
+    <ul>
+        {% for medication in medications %}
+            <h3>{{ medication.name }}</h3>
+            <p><strong>Code:</strong> {{ medication.code }}</p>
+            <p><strong>Category:</strong> {{ medication.category }}</p>
+            <p><strong>Description:</strong> {{ medication.description }}</p>
+            <p><strong>Instruction:</strong> {{ medication.instruction }}</p>
+            <p><strong>Cost:</strong> {{ medication.cost }}</p>
+            <img src="{{ medication.photo.url }}" alt="{{ medication.name }}" style="max-width: 200px; max-height: 200px;">
+        {% empty %}
+            <li>No medications found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

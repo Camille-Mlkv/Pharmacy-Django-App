@@ -1,0 +1,14 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Pickup points:</h2>
+  <ul>
+    {% for point in points %}
+      <li>
+        <h3>{{ point.name }}</h3>
+        <p><strong>Address:</strong> {{ point.address }}</p>
+        <img src="{{ point.photo.url }}" alt="{{ point.name }}" style="max-width: 200px; max-height: 200px;">
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

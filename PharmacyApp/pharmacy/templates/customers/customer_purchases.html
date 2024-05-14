@@ -1,0 +1,16 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Your Purchases</h2>
+  <ul>
+    {% for purchase in purchases %}
+      <li>
+        <p><strong>Medication:</strong> {{ purchase.product.name }}</p>
+        <p><strong>Quantity:</strong> {{ purchase.quantity }}</p>
+        <p><strong>Date:</strong> {{ purchase.date_sold }}</p>
+      </li>
+    {% empty %}
+      <li>You haven't made any purchases yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

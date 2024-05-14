@@ -1,0 +1,17 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Sales List</h2>
+  {% for pickup_point, sales in sales_by_pickup_point.items %}
+    <h2>Пункт выдачи #{{ pickup_point }}</h2>
+    <ul>
+        {% for sale in sales %}
+            <li>{{ sale.product }} - {{ sale.quantity }} штук</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+    {% for pickup_point, revenue in revenue_by_pickup_point.items %}
+        <p>Доход пункта выдачи #{{ pickup_point }}: {{ revenue }}</p>
+    {% endfor %}
+    <p>Суммарная выручка: {{ total_revenue }}</p>
+{% endblock %}

@@ -1,0 +1,40 @@
+<!-- view_medications.html -->
+
+{% extends 'baseview.html' %}
+
+{% block content %}
+  <form method="GET" action="{% url 'filter_medications' %}">
+    <label for="min_price">Min Price:</label>
+    <input type="number" name="min_price" id="min_price">
+
+    <label for="max_price">Max Price:</label>
+    <input type="number" name="max_price" id="max_price">
+
+    <button type="submit">Filter</button>
+  </form>
+  <h2>Medications List</h2>
+  <ul>
+    {% for medication in medications %}
+      <li>
+        <h3>{{ medication.name }}</h3>
+        <p><strong>Code:</strong> {{ medication.code }}</p>
+        <p><strong>Category:</strong> {{ medication.category }}</p>
+        <p><strong>Description:</strong> {{ medication.description }}</p>
+        <p><strong>Instruction:</strong> {{ medication.instruction }}</p>
+        <p><strong>Cost:</strong> {{ medication.cost }}</p>
+        <img src="{{ medication.photo.url }}" alt="{{ medication.name }}" style="max-width: 200px; max-height: 200px;">
+
+        {% if request.user.is_admin %}
+          <a href="{% url 'edit_medication' medication.id %}" class="btn btn-primary">Edit</a>
+          <form action="{% url 'delete_medication' medication.id %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this medication?')">Delete</button>
+          </form>
+        {% elif request.user.is_customer %}
+          <a href="{% url 'buy_medication' medication.id %}" class="btn btn-primary">Buy</a>
+        {% endif %}
+
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

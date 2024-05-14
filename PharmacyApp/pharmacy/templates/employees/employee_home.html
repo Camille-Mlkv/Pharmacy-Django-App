@@ -1,0 +1,11 @@
+{%extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Welcome to employee home page! <span class="icon-emo-happy"></span></h2>
+    <div>
+      <a href="{% url 'view_medications' %}" class="btn btn-primary">Check all medications</a><br>
+      <a href="{% url 'view_suppliers' %}" class="btn btn-primary">Check suppliers</a><br>
+      <a href="{% url 'view_sales' %}" class="btn btn-primary">View all sales</a><br>
+    </div>
+
+{% endblock %}

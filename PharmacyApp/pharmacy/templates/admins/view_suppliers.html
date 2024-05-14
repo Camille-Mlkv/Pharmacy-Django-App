@@ -1,0 +1,16 @@
+{% extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Our suppliers</h2>
+  <ul>
+    {% for supplier in suppliers %}
+      <li>
+        <h3>{{ supplier.name }}</h3>
+        <p><strong>Address:</strong> {{ supplier.address }}</p>
+        <p><strong>Phone:</strong> {{ supplier.phone }}</p>
+        <p><strong>Email:</strong> {{ supplier.email }}</p>
+        <a href="{% url 'edit_supplier' supplier.id %}" class="btn btn-primary">Edit</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

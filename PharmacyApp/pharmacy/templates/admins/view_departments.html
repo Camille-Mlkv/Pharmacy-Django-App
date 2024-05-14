@@ -1,0 +1,17 @@
+
+{% extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Departments List</h2>
+  <ul>
+    {% for department in departments %}
+      <li>
+        <h3>{{ department.name }}</h3>
+        <p><strong>Address:</strong> {{ department.address }}</p>
+        <p><strong>Number of employees:</strong> {{ department.number_of_employees }}</p>
+        <img src="{{ department.photo.url }}" alt="{{ department.name }}" style="max-width: 200px; max-height: 200px;">
+        <a href="{% url 'edit_department' department.id %}" class="btn btn-primary">Edit</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

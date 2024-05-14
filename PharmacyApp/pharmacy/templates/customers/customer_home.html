@@ -1,0 +1,23 @@
+{%extends 'baseview.html' %}
+
+{% block content %}
+  <h2>Welcome to customer home page! <span class="icon-emo-happy"></span></h2>
+  <div>
+    <a href="{% url 'view_pickup_points' %}" class="btn btn-primary">Pickup points</a><br>
+    <a href="{% url 'view_catalog' %}" class="btn btn-primary">Medications</a><br>
+    <a href="{% url 'customer_purchases' %}" class="btn btn-primary">My purchases</a><br>
+
+    <form method="GET" action="{% url 'get_age' %}">
+      <label for="Your name">Your name:</label>
+      <input type="text" name="name" id="name">
+      <button type="submit">Получить возраст</button>
+    </form>
+
+    <form method="GET" action="{% url 'get_country' %}">
+      <label for="Your name">Your name:</label>
+      <input type="text" name="name" id="name">
+      <button type="submit">Получить национальность</button>
+    </form>
+
+  </div>
+{% endblock %}
